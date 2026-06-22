@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.env
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs and temp files
+*.log
+*.tmp
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
