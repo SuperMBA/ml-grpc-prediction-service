@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package mlservice.v1;
+
+// Сервис для проверки здоровья и предсказаний ML-модели
+service PredictionService {
+  // /health
+  rpc Health(HealthRequest) returns (HealthResponse) {}
+
+  // /predict
+  rpc Predict(PredictRequest) returns (PredictResponse) {}
+}
+
+// Пустой запрос для Health
+message HealthRequest {}
+
+// Ответ Health
+message HealthResponse {
+  string status = 1;        // например: "ok"
+  string modelVersion = 2;  // например: "v1.0.0"
+}
+
+// Запрос предсказания.
+// Пока сделаем универсально: вектор признаков features.
+message PredictRequest {
+  repeated float features = 1;
+}
+
+// Ответ предсказания.
+message PredictResponse {
+  string prediction = 1;     // метка / класс / число в виде строки
+  double confidence = 2;     // уверенность модели (0..1)
+  string modelVersion = 3;   // версия модели
+}
